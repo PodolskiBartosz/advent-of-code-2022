@@ -1,4 +1,4 @@
-# Day 3:
+# Day 3: Rucksack Reorganization (https://adventofcode.com/2022/day/3)
 # Rules:
 # - a single line represents a rucksack containing two compartments
 # - each compartment have the same amount of items and are seperated in the middle
@@ -28,7 +28,7 @@ def task_1(file):
 # that occurs in all three rucksacks
 def task_2(file):
     lines = file.read().splitlines()
-    # Create list of groups (nested lists), where each has three rucksacks using list comprehension
+    # Create using a "list comprehension" a list of groups (nested lists) with each group having three rucksacks
     groups = [[lines[i], lines[i + 1], lines[i + 2]] for i, _ in enumerate(lines[:-2]) if i % 3 == 0]
     priority = 0
     for group in groups:
