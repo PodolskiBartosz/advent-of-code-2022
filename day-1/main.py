@@ -1,17 +1,20 @@
-#https://adventofcode.com/2022/day/1
+# Day 1: Calorie Counting (https://adventofcode.com/2022/day/1)
+# Rules:
+# - inventory consists of calories seperated by new line
+# - each inventory is seperated by empty space
 
 def main():
-    print("Advent of Code - Day 1:")
+    print("Advent of Code - Day 1")
     file = open('input.txt', 'r')
-    lines = file.readlines()
-    task_1(lines)
-    task_2(lines)
+    task_1(file)
+    task_2(file)
 
 
-def task_1(lines):
+# Task 1: Get the calorie number of an inventory with the most of them
+def task_1(file):
     calories = 0
     max_calories = 0
-    for line in lines:
+    for line in file.readlines():
         if line == "\n":
             if calories > max_calories:
                 max_calories = calories
@@ -21,10 +24,11 @@ def task_1(lines):
     print("Task 1 result: " + str(max_calories))
 
 
-def task_2(lines):
+# Task 2: Sum top three inventories by calorie count
+def task_2(file):
     calories = 0
     calories_list = []
-    for line in lines:
+    for line in file.readlines():
         if line == "\n":
             calories_list.append(calories)
             calories = 0
@@ -32,6 +36,7 @@ def task_2(lines):
             calories += int(line)
     sum_top_calories = sum(sorted(calories_list)[-3:])
     print("Task 2 result: " + str(sum_top_calories))
+
 
 if __name__ == "__main__":
     main()
