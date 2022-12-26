@@ -1,15 +1,16 @@
 # Day 3: Rucksack Reorganization (https://adventofcode.com/2022/day/3)
-# Rules:
-# - a single line represents a rucksack containing two compartments
-# - each compartment have the same amount of items and are seperated in the middle
-# - every item type is identified by a single lower or uppercase letter
-# - priority of item is given by an order of the letter in the alphabet, starting at "a", ending at "Z"
+# Conditions:
+# - A single line represents a rucksack containing two compartments
+# - Each compartment have the same amount of items and are seperated in the middle
+# - Every item type is identified by a single lower or uppercase letter
+# - Priority of item is given by an order of the letter in the alphabet, starting at "a", ending at "Z"
 
 def main():
     print("Advent of Code - Day 3")
-    file = open('input.txt', 'r')
-    task_1(file)
-    task_2(file)
+    file_task_1 = open('input.txt', 'r')
+    file_task_2 = open('input.txt', 'r')
+    task_1(file_task_1)
+    task_2(file_task_2)
 
 
 # Task 1: Sum the priority of item types repeating in both compartments (one per rucksack) among all rucksacks
@@ -28,7 +29,7 @@ def task_1(file):
 # that occurs in all three rucksacks
 def task_2(file):
     lines = file.read().splitlines()
-    # Create using a "list comprehension" a list of groups (nested lists) with each group having three rucksacks
+    # Create a list of groups (nested lists) with each group having three rucksacks
     groups = [[lines[i], lines[i + 1], lines[i + 2]] for i, _ in enumerate(lines[:-2]) if i % 3 == 0]
     priority = 0
     for group in groups:

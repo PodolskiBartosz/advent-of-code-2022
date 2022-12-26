@@ -1,13 +1,14 @@
 # Day 1: Calorie Counting (https://adventofcode.com/2022/day/1)
-# Rules:
-# - inventory consists of calories seperated by new line
-# - each inventory is seperated by empty space
+# Conditions:
+# - Inventory consists of calories seperated by new line
+# - Each inventory is seperated by empty space
 
 def main():
     print("Advent of Code - Day 1")
-    file = open('input.txt', 'r')
-    task_1(file)
-    task_2(file)
+    file_task_1 = open('input.txt', 'r')
+    file_task_2 = open('input.txt', 'r')
+    task_1(file_task_1)
+    task_2(file_task_2)
 
 
 # Task 1: Get the calorie number of an inventory with the most of them

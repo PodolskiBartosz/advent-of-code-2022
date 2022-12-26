@@ -1,14 +1,15 @@
 # Day 2: Rock Paper Scissors (https://adventofcode.com/2022/day/2)
-# Rules:
-# - regular rock-paper-scissors game
-# - new line represents a new round
-# - score is a combination of round's outcome and points for a shape
+# Conditions:
+# - Rules of regular rock-paper-scissors game
+# - New line represents a new round
+# - Score is a combination of round's outcome and points for a shape
 
 def main():
     print("Advent of Code - Day 2")
-    file = open('input.txt', 'r')
-    task_1(file)
-    task_2(file)
+    file_task_1 = open('input.txt', 'r')
+    file_task_2 = open('input.txt', 'r')
+    task_1(file_task_1)
+    task_2(file_task_2)
 
 
 class Shape:
