@@ -1,4 +1,4 @@
-# Day 3: Camp Cleanup (https://adventofcode.com/2022/day/4)
+# Day 4: Camp Cleanup (https://adventofcode.com/2022/day/4)
 # Conditions:
 # - A line represents two ranges of id-sections
 
