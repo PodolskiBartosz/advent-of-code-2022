@@ -2,10 +2,13 @@
 
 ### Description
 My solutions to the **Advent of Code** challenges written in Python. 
-My focus was on writing an efficient and pretty concise but understandable solution with some amount of 
-explanation in the form of comments. 
 
-This project serves as a way to brush up on my python skills and knowledge.
+The solutions are quite efficient, concise and full of comments explaining what I've done. If you want to check
+some other solutions or are struggling with solving the puzzle, then you're at the right place.
+
+
+This project serves as a way to brush up on my python skills and knowledge, as well as explaining my code in comments
+in an understandable and beginner-friendly way
 
 ### About Advent of Code
 [Advent of Code](https://adventofcode.com) is an Advent calendar of small programming puzzles for a variety of skill 

@@ -1,11 +1,11 @@
 # Day 6: Tuning Trouble (https://adventofcode.com/2022/day/6)
 # Conditions:
-# - In a given file there is a non-seperated string of characters
+# - The input represents a non-seperated string of characters
 # - The answer is the position of the character in the string; This character is the last character of a
 #   substring consisting of X unique characters starting; Substrings are created in a schema 0:X->1:X+1
 
 def main():
-    print("Advent of Code - Day 4")
+    print("Advent of Code - Day 6")
     file_task_1 = open('input.txt', 'r')
     file_task_2 = open('input.txt', 'r')
     task_1(file_task_1)

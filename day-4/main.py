@@ -1,6 +1,6 @@
 # Day 4: Camp Cleanup (https://adventofcode.com/2022/day/4)
 # Conditions:
-# - A line represents two ranges of id-sections
+# - A line represents two ranges of id-sections seperated by coma
 
 
 def main():
@@ -15,14 +15,22 @@ def main():
 def task_1(file):
     overlaps = 0
     for line in file.read().splitlines():
-        # Create a list using split and map function in order to extract range values as int in a nested list
-        pairs = [list(map(int, pair.split('-'))) for pair in line.split(",")]
-        if pairs[0][0] == pairs[1][0]:
-            # Determine the inside_range_index by the smaller ending value
-            inside_range_index, outside_range_index = (0, 1) if pairs[0][1] < pairs[1][1] else (1, 0)
+        # Create two lists using split and map function in order to extract range values as integers
+        first_pair, second_pair = [list(map(int, pair.split('-'))) for pair in line.split(",")]
+        if first_pair[0] != second_pair[0]:
+            # Determine the inside range by the higher starting value
+            if first_pair[0] > second_pair[0]:
+                inside_range, outside_range = first_pair, second_pair
+            else:
+                inside_range, outside_range = second_pair, first_pair
         else:
-            inside_range_index, outside_range_index = (0, 1) if pairs[0][0] > pairs[1][0] else (1, 0)
-        if pairs[inside_range_index][1] <= pairs[outside_range_index][1]:
+            # If the starting value is the same, then determine the inside range by the smaller ending value
+            if first_pair[1] < second_pair[1]:
+                inside_range, outside_range = first_pair, second_pair
+            else:
+                inside_range, outside_range = second_pair, first_pair
+        # Check if the inside range ends before or at the same place as the end of outside range
+        if inside_range[1] <= outside_range[1]:
             overlaps += 1
     print("Task 1 result: " + str(overlaps))
 
@@ -31,9 +39,15 @@ def task_1(file):
 def task_2(file):
     overlaps = 0
     for line in file.read().splitlines():
-        pairs = [list(map(int, pair.split('-'))) for pair in line.split(",")]
-        inside_range_index, outside_range_index = (0, 1) if pairs[0][0] > pairs[1][0] else (1, 0)
-        if pairs[inside_range_index][0] <= pairs[outside_range_index][1]:
+        # Create two lists using split and map function in order to extract range values as integers
+        first_pair, second_pair = [list(map(int, pair.split('-'))) for pair in line.split(",")]
+        # Determine the inside range by the higher starting value
+        if first_pair[0] > second_pair[0]:
+            inside_range_index, outside_range_index = first_pair, second_pair
+        else:
+            inside_range_index, outside_range_index = second_pair, first_pair
+        # Check if the inside range ends before or at the same place as the start of outside range
+        if inside_range_index[0] <= outside_range_index[1]:
             overlaps += 1
     print("Task 2 result: " + str(overlaps))
 
