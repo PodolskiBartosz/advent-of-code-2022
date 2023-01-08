@@ -51,7 +51,8 @@ def task_1(file):
     print("Task 1 result: " + str(sum_small_directories))
 
 
-# Task 2:
+# Task 2: Get the smallest directory that can be deleted, in order to have at least 30000000 free space, with 70000000
+#         being the total disk space available
 def task_2(file):
     directories = get_file_system_directories(file)
     required_free_space = directories["/home"] - (70000000 - 30000000)  # 40000000 of the space can be used
