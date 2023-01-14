@@ -12,31 +12,34 @@ def main():
     task_2(file_task_2)
 
 
-# Task 1: Get the calorie number of an inventory with the most of them
+# Task 1: Get the calorie number of an inventory with the most calories
 def task_1(file):
+    # Iterate over all calories, group them in inventories and after finishing grouping, compare it with
+    # the previous one
     inventory = 0
     biggest_inventory = 0
     for line in file.readlines():
-        if line == "\n":  # The line is empty representing end of one inventory
+        if line == "\n":  # The line is empty thus is end of one inventory
             if inventory > biggest_inventory:
                 biggest_inventory = inventory
             inventory = 0
-        else:  # The line represent calories
+        else:  # Otherwise it represents calories
             inventory += int(line)
     print("Task 1 result: " + str(biggest_inventory))
 
 
 # Task 2: Sum top three inventories by calorie count
 def task_2(file):
+    # First steps are the same as above, but instead of comparing, it'll be added to a list.
     inventory = 0
     inventory_list = []
     for line in file.readlines():
-        if line == "\n":  # The line is empty representing end of one inventory
+        if line == "\n":
             inventory_list.append(inventory)
             inventory = 0
-        else:  # Otherwise the line represents calories
+        else:
             inventory += int(line)
-    sum_top_inventories = sum(sorted(inventory_list)[-3:])  # Sort inventories and sum last 3 of them (the highest ones)
+    sum_top_inventories = sum(sorted(inventory_list)[-3:])  # Sort the list and sum last 3 entries (the highest ones)
     print("Task 2 result: " + str(sum_top_inventories))
 
 

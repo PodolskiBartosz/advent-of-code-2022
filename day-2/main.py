@@ -21,6 +21,7 @@ class Shape:
         self.win_against = win_against
         self.lose_against = lose_against
 
+    # Determine the outcome using mapping and classes
     def determine_user_score(self, char):
         match char:
             case "X":  # Lose
@@ -53,6 +54,7 @@ shapes_mapping = {
 
 # Task 1: Sum user's score from all games using user's and opponent's shape
 def task_1(file):
+    # Iterate over the games, decide the outcome using classes and add the scores
     score = 0
     for line in file.readlines():
         opponent_shape, user_shape = line.split()

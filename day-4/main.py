@@ -13,6 +13,8 @@ def main():
 
 # Task 1: Get number of assignments, where one range completely overlaps with the other
 def task_1(file):
+    # Iterate over sections, create pairs and determine outside and inside range (range that has the higher starting
+    # value)
     overlaps = 0
     for line in file.read().splitlines():
         # Create two lists using split and map function in order to extract range values as integers
@@ -39,9 +41,7 @@ def task_1(file):
 def task_2(file):
     overlaps = 0
     for line in file.read().splitlines():
-        # Create two lists using split and map function in order to extract range values as integers
         first_pair, second_pair = [list(map(int, pair.split('-'))) for pair in line.split(",")]
-        # Determine the inside range by the higher starting value
         if first_pair[0] > second_pair[0]:
             inside_range_index, outside_range_index = first_pair, second_pair
         else:

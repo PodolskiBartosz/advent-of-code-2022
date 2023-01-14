@@ -14,6 +14,7 @@ def main():
 
 # Task 1: Get the position of the character, with X being 4
 def task_1(file):
+    # Iterate over characters until 4 characters in a row are unique
     file_content = file.read()
     index = 0
     while len(set(file_content[index:index+4])) != 4:
@@ -23,6 +24,7 @@ def task_1(file):
 
 # Task 2: Get the position of the character, with X being 14
 def task_2(file):
+    # Iterate over characters until 14 characters in a row are unique
     file_content = file.read()
     index = 0
     while len(set(file_content[index:index+14])) != 14:

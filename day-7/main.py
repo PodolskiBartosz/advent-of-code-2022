@@ -16,6 +16,7 @@ def main():
 
 
 def get_file_system_directories(file):
+    # Create a list of directories by judging the inputs
     current_path = ""
     directories = {"/home": 0}
     for line in file.read().splitlines():
@@ -35,6 +36,7 @@ def get_file_system_directories(file):
         else:
             if line[0] != "dir":
                 temp_path = current_path
+                # Update all parent directories
                 while temp_path != "":
                     directories[temp_path] += int(line[0])
                     temp_path = temp_path[:temp_path.rindex("/")]

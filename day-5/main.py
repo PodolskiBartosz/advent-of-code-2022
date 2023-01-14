@@ -2,7 +2,7 @@
 # Conditions:
 # - The input represents two sections seperated by an empty line, crates section and rearrangement section
 # - Crates Section is a 9 by 9 table, with vertical stacks and horizontal levels; The bottom level describes a stack
-#   with numbers from  1 to 9; Other levels (8 of them) are filled with crates represented by capital letters surrounded
+#   with numbers from 1 to 9; Other levels (8 of them) are filled with crates represented by capital letters surrounded
 #   by squared brackets; Lack of crate is represented by three empty spaces
 # - Rearrangement section consists of a list of instructions; An instruction has a syntax "move [number of crates] from
 #   [stack x] to [stack y]"
@@ -16,7 +16,7 @@ def main():
 
 
 def get_sections(file):
-    # Separate into two sections and get a list of lines
+    # Separate the file into two sections: instructions and levels; Furthermore get a list of stacks using the levels
     levels, instructions = [section.split("\n") for section in file.read().split("\n\n")]
     levels = [crate.replace("    ", " [X] ") for crate in levels[:-1]]  # Replace empty space with [X]
     levels = [[crate[1] for crate in level.split()] for level in levels]  # Get rid of brackets
@@ -31,6 +31,7 @@ def get_sections(file):
 # Task 1: Get the crate names from the top of each stack after the rearrangement procedure, hereby the crates are moved
 #         one after another, so the top crate of one stock ends up on the bottom of another
 def task_1(file):
+    # Iterate over instructions, get relevant values from it and move the creates
     instructions, levels, stacks = get_sections(file)
     for instruction in instructions:
         quantity, from_stack_order, to_stack_order = [int(i) for i in instruction.split(" ") if i.isnumeric()]

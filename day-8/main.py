@@ -2,7 +2,8 @@
 # Conditions:
 # - The input represents a forest full of trees in a grid format
 # - The height of a tree ranges from 0 until 9
-# - A tree is visible if all the surrounding trees from one of the directions (left, right, top, bottom) is lower
+# - A tree is visible, if all the surrounding trees from one of the directions (left, right, top, bottom)
+#   is lower than it
 
 
 def main():
@@ -15,6 +16,7 @@ def main():
 
 # Task 1: Get number of the trees visible from outside the grid
 def task_1(file):
+    # Iterate over all trees and check if any of the sides are completely visible
     grid = file.read().splitlines()
     visible_trees = len(grid)*2 + (len(grid[0])-2)*2  # Get number of trees outside
     for row_index, row in enumerate(grid):
@@ -49,6 +51,7 @@ def get_vision(tree_height, tree_list):
 #         distance in each of the four directions; Viewing distance is the amount of trees that are of the same or lower
 #         height; Outermost trees have the distance of 0
 def task_2(file):
+    # Iterate over all the trees and check if the tree's combined visions is higher than the highest one until now
     grid = file.read().splitlines()
     highest_scenic_score = 0
     for row_index, row in enumerate(grid):

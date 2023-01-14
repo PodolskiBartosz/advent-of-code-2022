@@ -15,6 +15,8 @@ def main():
 
 # Task 1: Sum the priority of item types repeating in both compartments of a rucksack (among all rucksacks)
 def task_1(file):
+    # Iterate over rucksacks, separate each in half and find out the priority of the common item between both halves
+    # using ASCII
     priority = 0
     for line in file.read().splitlines():
         middle_index = int(len(line) / 2)
@@ -28,6 +30,8 @@ def task_1(file):
 # Task 2: Sum the priority of badges among all groups; A group consists of three rucksacks; A badge is an item type
 # that occurs in all three rucksacks
 def task_2(file):
+    # Iterate over rucksacks, create groups with 3 rucksacks in them and find out the priority of an item that occurs
+    # in all 3 of them
     lines = file.read().splitlines()
     # Create a list of groups (nested lists) with each group having three rucksacks
     groups = [[lines[i], lines[i + 1], lines[i + 2]] for i, _ in enumerate(lines[:-2]) if i % 3 == 0]
