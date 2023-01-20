@@ -1,7 +1,8 @@
 # Day 9: Rope Bridge (https://adventofcode.com/2022/day/9)
 # Conditions:
 # - The input represents series of motions (R, L, U, D) of the rope's head
-# - The rope has a head and a tail, which must always stay in touch, even by overlapping
+# - The rope has a head and a tail, which must always stay in touch, even by overlapping; More tails can exist, which
+#   must stay in touch with the tail before them
 # - If the head is ever two steps directly up, down, left or right from the tail, the tail must also move one step in
 #   that direction
 # - Otherwise, if the head and tail aren't touching and aren't in the same row or column, the tail always moves one step
@@ -17,7 +18,7 @@ def main():
     task_2(file_task_2)
 
 
-def get_visited_by_tail(rope, moves):
+def get_tail_visited_pos(rope, moves):
     # Iterate firstly over all move instructions, over each move, move the head and then iterate over all tails as long
     # as the tail is not touching the temporary head; Afterwards it will be checked if the head is in the same line,
     # if not then the tail should move diagonally; Until the tail touches the head it will move straight. If it's the
@@ -34,10 +35,10 @@ def get_visited_by_tail(rope, moves):
                     is_last_tail = knot_idx+2 == len(rope)
                     if not (temp_head[0] == tail[0] or temp_head[1] == tail[1]):
                         move_tail_diagonally(temp_head, tail)
-                        add_tail_to_dict(is_last_tail, tail, tail_visited_pos)
+                        fill_visited_pos(is_last_tail, tail, tail_visited_pos)
                     while not is_head_touching(temp_head, tail):
                         move_tail_straight(temp_head, tail)
-                        add_tail_to_dict(is_last_tail, tail, tail_visited_pos)
+                        fill_visited_pos(is_last_tail, tail, tail_visited_pos)
                 else:
                     break
     return tail_visited_pos
@@ -85,7 +86,7 @@ def is_head_touching(head, tail):
     return max(row_dist_from_head, column_dist_from_head) <= 1
 
 
-def add_tail_to_dict(should, tail, dictionary):
+def fill_visited_pos(should, tail, dictionary):
     if should:
         dictionary.setdefault(tail[0], set()).add(tail[1])
 
@@ -114,7 +115,7 @@ def visualize_test(rope):
 # Task 1: Get the number of positions, that the tail visited at least once (including start position) with 2 knots
 def task_1(file):
     rope = [[0, 0] for _ in range(2)]
-    tail_visited_pos = get_visited_by_tail(rope, file.readlines())
+    tail_visited_pos = get_tail_visited_pos(rope, file.readlines())
     visited_pos_num = 0
     for row in tail_visited_pos.values():
         visited_pos_num += len(set(row))
@@ -124,7 +125,7 @@ def task_1(file):
 # Task 2: Get the number of positions, that the tail visited at least once (including start position) with 10 knots
 def task_2(file):
     rope = [[0, 0] for _ in range(10)]
-    tail_visited_pos = get_visited_by_tail(rope, file.readlines())
+    tail_visited_pos = get_tail_visited_pos(rope, file.readlines())
     visited_pos_num = 0
     for row in tail_visited_pos.values():
         visited_pos_num += len(row)
